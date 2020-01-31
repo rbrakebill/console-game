@@ -1,0 +1,82 @@
+<script>
+  function computerPlay() {
+    var computerSelect = ["rock", "paper", "scissors"];
+
+    var randomSelectionCPU =
+      computerSelect[Math.floor(Math.random() * computerSelect.length)];
+    return randomSelectionCPU;
+  }
+
+  function playerPlay() {
+    return prompt("Rock, Paper, Scissors, Shoot!");
+  }
+
+  function playRound(playerSelection, computerSelection) {
+    console.log(computerSelection, playerSelection);
+    if (computerSelection == "rock") {
+      return "Draw!";
+    }
+    if (computerSelection == "paper") {
+      return "Defeat!";
+    }
+    if (computerSelection == "scissors") {
+      return "Winner!";
+    }
+  }
+
+  function game() {
+    let count = 0;
+    var wins = 0;
+    var draws = 0;
+    var loss = 0;
+    while (count < 5) {
+      const playerSelection = playerPlay();
+      const computerSelection = computerPlay();
+      console.log(playerSelection, computerSelection);
+      if (playerSelection.toLowerCase() == "rock") {
+        if (computerSelection == "rock") {
+          console.log("Draw!");
+          draws++;
+        } else if (computerSelection == "paper") {
+          console.log("Defeat!");
+          loss++;
+        } else if (computerSelection == "scissors") {
+          console.log("Victory!");
+          wins++;
+        }
+      } else if (playerSelection.toLowerCase() == "paper") {
+        if (computerSelection == "rock") {
+          console.log("Victory!");
+          wins++;
+        } else if (computerSelection == "paper") {
+          console.log("Draw!");
+          draws++;
+        } else if (computerSelection == "scissors") {
+          console.log("Defeat!");
+          loss++;
+        }
+      } else if (playerSelection.toLowerCase() == "scissors") {
+        if (computerSelection == "rock") {
+          console.log("Defeat!");
+          loss++;
+        } else if (computerSelection == "paper") {
+          console.log("Victory!");
+          wins++;
+        } else if (computerSelection == "scissors") {
+          console.log("Draw!");
+          draws++;
+        }
+      } else {
+        alert("wtf man");
+      }
+      count++;
+    }
+    if (wins >= 3) {
+      console.log("Player takes all!");
+    } else if (wins < 3 && draws < 3) {
+      console.log("Computer takes all!");
+    } else if (draws == 5) {
+      console.log("Everyone loses!");
+    }
+  }
+</script>
